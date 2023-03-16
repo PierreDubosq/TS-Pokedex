@@ -44,6 +44,15 @@ class Server {
       });
     });
   }
+
+  /**
+   * @brief Stop the server
+   */
+  public async stop(): Promise<void> {
+    await this.server.stop();
+
+    Logger.info('Server stopped');
+  }
 }
 
 
