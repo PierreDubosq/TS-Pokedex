@@ -7,6 +7,7 @@
   "author": "Pierre Dubosq <pierre@dubosq.eu>",
   "license": "MIT",
   "dependencies": {
+    "graphql": "^16.6.0",
     "poseidon-logger": "^1.0.2",
     "typescript": "^5.0.2"
   },
