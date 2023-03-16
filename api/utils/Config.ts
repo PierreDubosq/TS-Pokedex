@@ -19,6 +19,15 @@ class Config {
   public static get MONGO_INITDB_ROOT_PASSWORD(): string {
     return env.get('MONGO_INITDB_ROOT_PASSWORD').required().asString();
   }
+
+  /**
+   * @brief Get the MONGO_INITDB_DATABASE variable from the environment
+   * 
+   * @returns The MONGO_INITDB_DATABASE variable
+   */
+  public static get MONGO_INITDB_DATABASE(): string {
+    return env.get('MONGO_INITDB_DATABASE').required().asString();
+  }
 }
 
 
