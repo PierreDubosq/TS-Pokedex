@@ -1,0 +1,9 @@
+{
+  "name": "TS-Pokedex",
+  "version": "1.0.0",
+  "description": "TS-Pokedex is a graphql API to provide Pokémon data",
+  "main": "main.ts",
+  "repository": "git@github.com:PierreDubosq/TS-Pokedex.git",
+  "author": "Pierre Dubosq <pierre@dubosq.eu>",
+  "license": "MIT"
+}
