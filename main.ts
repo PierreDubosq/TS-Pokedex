@@ -1,8 +1,12 @@
 import Logger from 'poseidon-logger';
 
+import Server from './sources/Server';
+
 
 async function main(): Promise<void> {
-  Logger.info('Hello World!');
+  const server = new Server();
+
+  await server.start();
 }
 
 
