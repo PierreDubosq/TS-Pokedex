@@ -9,5 +9,8 @@
   "dependencies": {
     "poseidon-logger": "^1.0.2",
     "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
   }
 }
