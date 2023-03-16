@@ -2,15 +2,26 @@ version: '3'
 
 services:
 
+  app:
+    build: ./app
+    container_name: pokedex-app
+    env_file:
+      - .env
+    networks:
+      - network-pokedex-database
+    ports:
+      - 3000:3000
+    restart: always
+
   database:
     container_name: pokedex-database
     env_file:
       - .env
     image: mongo:6.0.5
+    logging:
+      driver: none
     networks:
       - network-pokedex-database
-    ports:
-      - 27017:27017
     restart: always
     volumes:
       - volume-pokedex-database-data:/data/db
