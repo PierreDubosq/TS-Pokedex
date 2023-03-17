@@ -38,3 +38,16 @@ UserSchema.pre<IUser>('save', function (next): void {
     next();
   });
 });
+
+
+UserSchema.methods.comparePassword = function (password: string): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, this.password, (err, same) => {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve(same);
+    });
+  });
+}
