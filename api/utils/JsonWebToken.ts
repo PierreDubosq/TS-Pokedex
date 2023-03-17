@@ -15,6 +15,19 @@ class JsonWebToken {
     const token: string = jwt.sign(payload, secret, { expiresIn: '1h' });
     return token;
   }
+
+  /**
+   * @brief Verify a token with a secret key
+   * 
+   * @param token Token to verify
+   * 
+   * @returns Decoded token
+   */
+  public static verify = (token: string): string | jwt.JwtPayload => {
+    const secret: string = env.get('TOKEN_KEY').required().asString();
+    const decoded: string | jwt.JwtPayload = jwt.verify(token, secret);
+    return decoded;
+  }
 }
 
 
