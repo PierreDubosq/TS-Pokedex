@@ -1,4 +1,4 @@
-import Logger from 'poseidon-logger';
+import requestLog from '../middlewares/requestLog';
 
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
@@ -6,6 +6,7 @@ import { json } from 'body-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
 import * as fs from 'fs';
+import Logger from 'poseidon-logger';
 
 
 class Server {
@@ -29,6 +30,8 @@ class Server {
     this.app = express();
 
     this.app.set('view engine', 'ejs');
+
+    this.app.use(requestLog);
   }
 
   /**
