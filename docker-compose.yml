@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  api:
+    build: ./api
+    container_name: pokedex-api
+    env_file:
+      - .env
+    networks:
+      - network-pokedex-database
+    ports:
+      - 3000:3000
+    restart: always
+
+  database:
+    container_name: pokedex-database
+    env_file:
+      - .env
+    image: mongo:6.0.5
+    logging:
+      driver: none
+    networks:
+      - network-pokedex-database
+    restart: always
+    volumes:
+      - volume-pokedex-database-data:/data/db
+      - volume-pokedex-database-config:/data/configdb
+
+networks:
+  network-pokedex-database:
+
+volumes:
+  volume-pokedex-database-data:
+  volume-pokedex-database-config:

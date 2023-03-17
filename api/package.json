@@ -1,0 +1,27 @@
+{
+  "name": "TS-Pokedex",
+  "version": "1.0.0",
+  "description": "TS-Pokedex is a graphql API to provide Pokémon data",
+  "main": "main.ts",
+  "repository": "git@github.com:PierreDubosq/TS-Pokedex.git",
+  "author": "Pierre Dubosq <pierre@dubosq.eu>",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.5.0",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "env-var": "^7.3.0",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "mongoose": "^7.0.2",
+    "poseidon-logger": "^1.0.2",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js"
+  }
+}
