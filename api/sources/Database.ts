@@ -26,6 +26,18 @@ class Database {
       }
     }
   }
+
+  /**
+   * @brief Disconnect from the database
+   */
+  public static async disconnect(): Promise<void> {
+    if (mongoose.connection.readyState === 1) {
+      await mongoose.disconnect();
+      Logger.info('Disconnected from database');
+    } else {
+      Logger.warn('Failed to disconnect from database, not connected');
+    }
+  }
 }
 
 
