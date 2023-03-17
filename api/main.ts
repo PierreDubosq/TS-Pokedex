@@ -1,12 +1,12 @@
 import Logger from 'poseidon-logger';
 
+import Database from './sources/Database';
 import Server from './sources/Server';
 
 
 async function main(): Promise<void> {
-  const server = new Server();
-
-  await server.start();
+  await Database.connect();
+  await (new Server()).start();
 }
 
 
