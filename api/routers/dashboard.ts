@@ -1,3 +1,5 @@
+import validToken from '../middlewares/validToken';
+
 import { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import Logger from 'poseidon-logger';
@@ -7,8 +9,9 @@ const router = Router();
 
 
 router.get('/dashboard',
+  validToken,
   async (
-    _: Request,
+    request: Request,
     response: Response
   ): Promise<void> => {
     Logger.info('Success in GET /dashboard');
