@@ -7,7 +7,7 @@ import Logger from 'poseidon-logger';
 
 declare module 'express' { 
   export interface Request {
-    user: string | JwtPayload
+    user?: string | JwtPayload;
   }
 }
 
