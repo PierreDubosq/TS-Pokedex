@@ -12,7 +12,7 @@ const router = Router();
 
 router.get('/login',
   async (
-    _: Request,
+    request: Request,
     response: Response
   ): Promise<void> => {
     Logger.info('Success in GET /login');
