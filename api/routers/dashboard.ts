@@ -1,5 +1,3 @@
-import validToken from '../middlewares/validToken';
-
 import { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import Logger from 'poseidon-logger';
@@ -9,7 +7,6 @@ const router = Router();
 
 
 router.get('/dashboard',
-  validToken,
   async (
     request: Request,
     response: Response
