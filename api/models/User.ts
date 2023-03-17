@@ -51,3 +51,9 @@ UserSchema.methods.comparePassword = function (password: string): Promise<boolea
     });
   });
 }
+
+
+const User = mongoose.model<IUser>('User', UserSchema);
+
+
+export default User;
