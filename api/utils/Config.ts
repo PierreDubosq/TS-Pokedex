@@ -28,6 +28,15 @@ class Config {
   public static get MONGO_INITDB_DATABASE(): string {
     return env.get('MONGO_INITDB_DATABASE').required().asString();
   }
+
+  /**
+   * @brief Get the TOKEN_KEY variable from the environment
+   * 
+   * @returns The TOKEN_KEY variable
+   */
+  public static get TOKEN_KEY(): string {
+    return env.get('TOKEN_KEY').required().asString();
+  }
 }
 
 
