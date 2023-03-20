@@ -4,7 +4,7 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { json } from 'body-parser';
 import cors from 'cors';
-import express, { Application } from 'express';
+import express, { Application, urlencoded } from 'express';
 import * as fs from 'fs';
 import Logger from 'poseidon-logger';
 
@@ -28,7 +28,9 @@ class Server {
     });
 
     this.app = express();
-
+    this.app.use(cors());
+    this.app.use(json());
+    this.app.use(urlencoded({ extended: true }));
     this.app.use(requestLog);
   }
 
