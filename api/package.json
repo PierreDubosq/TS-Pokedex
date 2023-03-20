@@ -22,6 +22,7 @@
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.2",
+    "multer": "^1.4.5-lts.1",
     "poseidon-logger": "^1.0.2",
     "typescript": "^5.0.2"
   },
