@@ -29,8 +29,6 @@ class Server {
 
     this.app = express();
 
-    this.app.set('view engine', 'ejs');
-
     this.app.use(requestLog);
   }
 
