@@ -37,6 +37,15 @@ class Config {
   public static get TOKEN_KEY(): string {
     return env.get('TOKEN_KEY').required().asString();
   }
+
+  /**
+   * @brief Get the ADMIN_USERNAME variable from the environment
+   * 
+   * @returns The ADMIN_USERNAME variable
+   */
+  public static get ADMIN_USERNAME(): string {
+    return env.get('ADMIN_USERNAME').default('admin').asString();
+  }
 }
 
 
