@@ -38,6 +38,18 @@ class Database {
       Logger.warn('Failed to disconnect from database, not connected');
     }
   }
+
+  /**
+   * @brief Drop the database
+   */
+  public static async drop(): Promise<void> {
+    if (mongoose.connection.readyState === 1) {
+      await mongoose.connection.dropDatabase();
+      Logger.info('Dropped database');
+    } else {
+      Logger.warn('Failed to drop database, not connected');
+    }
+  }
 }
 
 
