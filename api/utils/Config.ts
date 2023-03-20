@@ -55,6 +55,15 @@ class Config {
   public static get ADMIN_PASSWORD(): string {
     return env.get('ADMIN_PASSWORD').default('admin').asString();
   }
+
+  /**
+   * @brief Get the ADMIN_EMAIL variable from the environment
+   * 
+   * @returns The ADMIN_EMAIL variable
+   */
+  public static get ADMIN_EMAIL(): string {
+    return env.get('ADMIN_EMAIL').default('admin@localhost').asString();
+  }
 }
 
 
