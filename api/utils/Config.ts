@@ -46,6 +46,15 @@ class Config {
   public static get ADMIN_USERNAME(): string {
     return env.get('ADMIN_USERNAME').default('admin').asString();
   }
+
+  /**
+   * @brief Get the ADMIN_PASSWORD variable from the environment
+   * 
+   * @returns The ADMIN_PASSWORD variable
+   */
+  public static get ADMIN_PASSWORD(): string {
+    return env.get('ADMIN_PASSWORD').default('admin').asString();
+  }
 }
 
 
