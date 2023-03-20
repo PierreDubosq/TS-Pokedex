@@ -10,20 +10,6 @@ import Logger from 'poseidon-logger';
 const router = Router();
 
 
-router.get('/login',
-  async (
-    request: Request,
-    response: Response
-  ): Promise<void> => {
-    Logger.info('Success in GET /login');
-
-    return response
-      .status(StatusCodes.OK)
-      .render('pages/login');
-  }
-);
-
-
 router.post('/login',
   async (
     request: Request,
