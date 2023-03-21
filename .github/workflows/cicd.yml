@@ -10,7 +10,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    environment: githubactions
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -28,7 +27,6 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    environment: githubactions
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -46,7 +44,6 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
-    environment: githubactions
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
