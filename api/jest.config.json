@@ -1,0 +1,16 @@
+{
+  "coverageDirectory": "./coverage",
+  "testMatch": [
+    "**/tests/**/*.ts"
+  ],
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "collectCoverageFrom": [
+    "*/**/*.ts"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/dist/",
+    "/node_modules/",
+    "/tests/"
+  ]
+}

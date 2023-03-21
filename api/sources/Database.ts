@@ -11,7 +11,7 @@ class Database {
    * @param retry Number of retries
    */
   public static async connect(retry = 10): Promise<void> {
-    const uri: string = `mongodb://${Config.MONGO_INITDB_ROOT_USERNAME}:${Config.MONGO_INITDB_ROOT_PASSWORD}@database:27017/${Config.MONGO_INITDB_DATABASE}?authSource=admin`;
+    const uri = `mongodb://${Config.MONGO_INITDB_ROOT_USERNAME}:${Config.MONGO_INITDB_ROOT_PASSWORD}@database:27017/${Config.MONGO_INITDB_DATABASE}?authSource=admin`;
 
     try {
       await mongoose.connect(uri);

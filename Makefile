@@ -13,7 +13,7 @@ clean: stop
 	@echo "\033[31m[-] Cleaning containers\033[0m"
 
 tests: clean
-	@docker-compose up --build -d && docker exec api yarn test
+	@docker-compose up --build -d && docker exec pokedex-api yarn test
 
 restart: stop start
 

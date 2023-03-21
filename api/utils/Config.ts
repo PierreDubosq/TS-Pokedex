@@ -28,6 +28,42 @@ class Config {
   public static get MONGO_INITDB_DATABASE(): string {
     return env.get('MONGO_INITDB_DATABASE').required().asString();
   }
+
+  /**
+   * @brief Get the TOKEN_KEY variable from the environment
+   * 
+   * @returns The TOKEN_KEY variable
+   */
+  public static get TOKEN_KEY(): string {
+    return env.get('TOKEN_KEY').required().asString();
+  }
+
+  /**
+   * @brief Get the ADMIN_USERNAME variable from the environment
+   * 
+   * @returns The ADMIN_USERNAME variable
+   */
+  public static get ADMIN_USERNAME(): string {
+    return env.get('ADMIN_USERNAME').default('admin').asString();
+  }
+
+  /**
+   * @brief Get the ADMIN_PASSWORD variable from the environment
+   * 
+   * @returns The ADMIN_PASSWORD variable
+   */
+  public static get ADMIN_PASSWORD(): string {
+    return env.get('ADMIN_PASSWORD').default('admin').asString();
+  }
+
+  /**
+   * @brief Get the ADMIN_EMAIL variable from the environment
+   * 
+   * @returns The ADMIN_EMAIL variable
+   */
+  public static get ADMIN_EMAIL(): string {
+    return env.get('ADMIN_EMAIL').default('admin@localhost').asString();
+  }
 }
 
 
