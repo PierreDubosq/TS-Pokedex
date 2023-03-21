@@ -50,11 +50,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-      
-      - name: Install dependencies
-        run: yarn install
-        working-directory: ./api
 
       - name: Tests check
-        run: yarn test
-        working-directory: ./api
+        run: docker-compose up --build -d && docker exec pokedex-api yarn test
