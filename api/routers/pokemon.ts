@@ -4,6 +4,7 @@ import JsonWebToken from '../utils/JsonWebToken';
 
 import { Request, Response, Router } from 'express';
 import * as fs from 'fs';
+import { IncomingHttpHeaders } from 'http';
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 import multer from 'multer';
 import Logger from 'poseidon-logger';
@@ -29,6 +30,38 @@ router.post('/pokemon',
         name: string | undefined,
         types: string[] | undefined
       } = request.body;
+
+      const {
+        headers
+      }: {
+        headers: IncomingHttpHeaders
+      } = request;
+
+      const authorization: string | undefined = headers.authorization;
+
+      if (!authorization) {
+        Logger.warn('Error in POST /pokemon: Authorization is required');
+
+        return response
+          .status(StatusCodes.UNAUTHORIZED)
+          .json({
+            message: ReasonPhrases.UNAUTHORIZED,
+            error: 'Authorization is required'
+          });
+      }
+
+      try {
+        JsonWebToken.verify(authorization);
+      } catch (error) {
+        Logger.warn(`Error in POST /pokemon: ${error}`);
+
+        return response
+          .status(StatusCodes.UNAUTHORIZED)
+          .json({
+            message: ReasonPhrases.UNAUTHORIZED,
+            error
+          });
+      }
 
       if (!number) {
         Logger.warn('Error in POST /pokemon: Number is required');
