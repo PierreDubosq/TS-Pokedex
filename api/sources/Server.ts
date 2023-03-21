@@ -16,13 +16,22 @@ class Server {
   constructor() {
     this.server = new ApolloServer({
       typeDefs: `
+        type IPokemon {
+          number: Int!
+          name: String!
+          types: [String!]!
+          image: String!
+        }
+
         type Query {
-          hello: String
+          pokemons: [IPokemon!]!
+          pokemon(number: Int!): IPokemon
         }
       `,
       resolvers: {
         Query: {
-          hello: () => 'Hello world!',
+          pokemons: require('../resolvers/query.pokemons').default,
+          pokemon: require('../resolvers/query.pokemon').default,
         },
       },
     });
