@@ -11,9 +11,9 @@ import Logger from 'poseidon-logger';
 
 class Server {
   private server: ApolloServer;
-  private app: Application;
+  public app: Application;
 
-  constructor() {
+  constructor(port: number = 3000) {
     this.server = new ApolloServer({
       typeDefs: `
         type IPokemon {
@@ -41,6 +41,7 @@ class Server {
     this.app.use(json());
     this.app.use(urlencoded({ extended: true }));
     this.app.use(requestLog);
+    this.app.set('port', port);
   }
 
   /**
@@ -61,7 +62,7 @@ class Server {
     this.app.use('/graphql', cors(), json(), expressMiddleware(this.server));
 
     await new Promise<void>((resolve: () => void): void => {
-      this.app.listen(3000, (): void => {
+      this.app.listen(this.app.get('port'), () => {
         Logger.info('Server started');
 
         resolve();
