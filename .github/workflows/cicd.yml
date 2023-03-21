@@ -25,6 +25,23 @@ jobs:
         run: yarn build
         working-directory: ./api
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./api
+
+      - name: Lint check
+        run: yarn lint
+        working-directory: ./api
+
   tests:
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +55,6 @@ jobs:
         run: yarn install
         working-directory: ./api
 
-      - name: Build check
+      - name: Tests check
         run: yarn test
         working-directory: ./api
