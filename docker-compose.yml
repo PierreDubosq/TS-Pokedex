@@ -5,8 +5,11 @@ services:
   api:
     build: ./api
     container_name: pokedex-api
-    env_file:
-      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=database
+      - TOKEN_KEY=token_key
     networks:
       - network-pokedex-database
     ports:
@@ -15,8 +18,10 @@ services:
 
   database:
     container_name: pokedex-database
-    env_file:
-      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=database
     image: mongo:6.0.5
     logging:
       driver: none
