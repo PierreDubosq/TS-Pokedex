@@ -14,8 +14,7 @@ async function requestLog(
     }: {
       statusCode: number
     } = response;
-    const ip: string = (request.headers['x-forwarded-for'] || request.socket.remoteAddress || '').toString();
-    const message: string = `${status} ${ip.padEnd(15)} ${request.method.padEnd(7)} ${request.url}`;
+    const message: string = `${status} ${(request.headers['x-forwarded-for'] || request.socket.remoteAddress || '').toString().padEnd(15)} ${request.method.padEnd(7)} ${request.url}`;
 
     Logger.info(message);
   });

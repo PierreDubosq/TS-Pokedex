@@ -25,14 +25,10 @@ const UserSchema = new mongoose.Schema({
 
 
 UserSchema.pre<IUser>('save', function (next): void {
-  if (!this.isModified('password')) {
-    return next();
-  }
+  if (!this.isModified('password')) return next();
 
-  bcrypt.hash(this.password, 10, (err, hash) => {
-    if (err) {
-      return next(err);
-    }
+  bcrypt.hash(this.password, 10, (error, hash) => {
+    if (error) return next(error);
 
     this.password = hash;
     next();
@@ -42,10 +38,8 @@ UserSchema.pre<IUser>('save', function (next): void {
 
 UserSchema.methods.comparePassword = function (password: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
-    bcrypt.compare(password, this.password, (err, same) => {
-      if (err) {
-        return reject(err);
-      }
+    bcrypt.compare(password, this.password, (error, same) => {
+      if (error) return reject(error);
 
       resolve(same);
     });

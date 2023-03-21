@@ -1,4 +1,5 @@
 import IPokemon from '../interfaces/IPokemon';
+import validToken from '../middlewares/validToken';
 import Pokemon from '../models/Pokemon';
 import JsonWebToken from '../utils/JsonWebToken';
 
@@ -15,6 +16,7 @@ const upload = multer({ dest: 'uploads/' });
 
 
 router.post('/pokemon',
+  validToken,
   upload.single('file'),
   async (
     request: Request,
@@ -36,32 +38,6 @@ router.post('/pokemon',
       }: {
         headers: IncomingHttpHeaders
       } = request;
-
-      const authorization: string | undefined = headers.authorization;
-
-      if (!authorization) {
-        Logger.warn('Error in POST /pokemon: Authorization is required');
-
-        return response
-          .status(StatusCodes.UNAUTHORIZED)
-          .json({
-            message: ReasonPhrases.UNAUTHORIZED,
-            error: 'Authorization is required'
-          });
-      }
-
-      try {
-        JsonWebToken.verify(authorization);
-      } catch (error) {
-        Logger.warn(`Error in POST /pokemon: ${error}`);
-
-        return response
-          .status(StatusCodes.UNAUTHORIZED)
-          .json({
-            message: ReasonPhrases.UNAUTHORIZED,
-            error
-          });
-      }
 
       if (!number) {
         Logger.warn('Error in POST /pokemon: Number is required');
