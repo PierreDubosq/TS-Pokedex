@@ -36,7 +36,7 @@ describe('Query pokemons', () => {
       .field('name', 'Bulbasaur')
       .field('types', ['Grass', 'Poison']);
 
-    const query: string = `
+    const query = `
       query Pokemon($number: Int!) {
         pokemon(number: $number) {
           image

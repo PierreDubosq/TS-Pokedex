@@ -14,9 +14,16 @@ async function requestLog(
     }: {
       statusCode: number
     } = response;
-    const message: string = `${status} ${(request.headers['x-forwarded-for'] || request.socket.remoteAddress || '').toString().padEnd(15)} ${request.method.padEnd(7)} ${request.url}`;
 
-    Logger.info(message);
+    ((message: string): void => {
+      if (status >= 500) {
+        Logger.error(message);
+      } else if (status >= 400) {
+        Logger.warn(message);
+      } else {
+        Logger.info(message);
+      }
+    })(`${status} ${(request.headers['x-forwarded-for'] || request.socket.remoteAddress || '').toString().padEnd(15)} ${request.method.padEnd(7)} ${request.url}`);
   });
 
   return next();

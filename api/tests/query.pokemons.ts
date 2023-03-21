@@ -44,7 +44,7 @@ describe('Query pokemons', () => {
       .field('name', 'Ivysaur')
       .field('types', ['Grass', 'Poison']);
 
-    const query: string = `
+    const query = `
       query Pokemons {
         pokemons {
           types

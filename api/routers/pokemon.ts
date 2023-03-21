@@ -5,7 +5,6 @@ import JsonWebToken from '../utils/JsonWebToken';
 
 import { Request, Response, Router } from 'express';
 import * as fs from 'fs';
-import { IncomingHttpHeaders } from 'http';
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 import multer from 'multer';
 import Logger from 'poseidon-logger';
@@ -32,12 +31,6 @@ router.post('/pokemon',
         name: string | undefined,
         types: string[] | undefined
       } = request.body;
-
-      const {
-        headers
-      }: {
-        headers: IncomingHttpHeaders
-      } = request;
 
       if (!number) {
         Logger.warn('Error in POST /pokemon: Number is required');

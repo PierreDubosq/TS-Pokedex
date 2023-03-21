@@ -1,5 +1,8 @@
 import requestLog from '../middlewares/requestLog';
 
+import pokemon from '../resolvers/query.pokemon';
+import pokemons from '../resolvers/query.pokemons';
+
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { json } from 'body-parser';
@@ -13,7 +16,7 @@ class Server {
   private server: ApolloServer;
   public app: Application;
 
-  constructor(port: number = 3000) {
+  constructor(port = 3000) {
     this.server = new ApolloServer({
       typeDefs: `
         type IPokemon {
@@ -30,8 +33,8 @@ class Server {
       `,
       resolvers: {
         Query: {
-          pokemons: require('../resolvers/query.pokemons').default,
-          pokemon: require('../resolvers/query.pokemon').default,
+          pokemons,
+          pokemon,
         },
       },
     });
