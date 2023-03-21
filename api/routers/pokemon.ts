@@ -14,7 +14,7 @@ const upload = multer({ dest: 'uploads/' });
 
 
 router.post('/pokemon',
-  upload.single('image'),
+  upload.single('file'),
   async (
     request: Request,
     response: Response
